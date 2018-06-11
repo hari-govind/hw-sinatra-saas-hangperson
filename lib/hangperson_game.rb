@@ -27,6 +27,22 @@ class HangpersonGame
       return http.post(uri, "").body
     }
   end
+  def guess(letter)
+    match = letter =~ /^[a-z]$/i
+    raise(ArgumentError) unless match != nil
+    letter.downcase!
+    return false if letter.empty? or letter.size > 1 or @guesses.downcase.include? letter or @wrong_guesses.downcase.include? letter
+    if @word.downcase.include? letter
+      @guesses = @guesses + letter
+      true
+    else
+      @wrong_guesses = @wrong_guesses + letter
+      true
+    end
+  end
+
+
+  #getters and setters
   attr_accessor :word
   attr_accessor :guesses
   attr_accessor :wrong_guesses
