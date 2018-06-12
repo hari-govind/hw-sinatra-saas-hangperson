@@ -40,7 +40,15 @@ class HangpersonGame
       true
     end
   end
-
+  def word_with_guesses
+    @word.chars.map do |letter|
+      if @guesses.include? letter
+        letter
+      else
+        "-"
+      end
+    end.join("")
+  end
 
   #getters and setters
   attr_accessor :word
