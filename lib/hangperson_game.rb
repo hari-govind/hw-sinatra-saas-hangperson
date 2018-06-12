@@ -49,6 +49,15 @@ class HangpersonGame
       end
     end.join("")
   end
+  def check_win_or_lose
+    if @word.size == @guesses.size
+      :win
+    elsif @wrong_guesses.size >= 7
+      :lose 
+    else
+      :play
+    end
+  end
 
   #getters and setters
   attr_accessor :word
